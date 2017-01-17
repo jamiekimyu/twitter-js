@@ -2,34 +2,34 @@ const express = require( 'express' );
 const app = express(); // creates an instance of an express application
 const volleyball = require('volleyball')
 const nunjucks = require('nunjucks')
-const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
+// const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
+
+const routes = require('./routes/');
+
+app.use(volleyball)
+
+app.use('/', routes);
 
 app.listen(3000, function(){
     console.log("server listening")
 })
 
-app.use(volleyball)
+// app.use(function (req, res, next) {
+//     console.log(req.method, req.url); // do your logging here
+//     next();// call `next`, or else your app will be a black hole — receiving requests but never properly responding
+// })
 
-app.use(function (req, res, next) {
-    //console.log(req);
-    console.log(req.method, req.url);
-    //res.send(req.url)// do your logging here
-    next();// call `next`, or else your app will be a black hole — receiving requests but never properly responding
-})
+// app.get('/', function(req, res, next){
+//     res.send('Welcome to our Homepage');
+// })
 
-app.get('/', function(req, res, next){
-    res.send('Welcome to our Homepage');
-    //res.render( 'index', {title: 'Hall of Fame', people: people} );
-})
+// app.get('/halloffame', function(req, res, next){
+//     res.render( 'index', {title: 'Hall of Fame', people: people} );
+// })
 
-app.get('/halloffame', function(req, res, next){
-    //res.send('Welcome to our Homepage');
-    res.render( 'index', {title: 'Hall of Fame', people: people} );
-})
-
-app.get('/news', function(req, res, next){
-    res.send('Welcome to our News Homepage')
-})
+// app.get('/news', function(req, res, next){
+//     res.send('Welcome to our News Homepage')
+// })
 
 // in some file that is in the root directory of our application... how about app.js?
 var locals = {
