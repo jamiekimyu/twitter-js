@@ -11,6 +11,11 @@ router.get('/', function (req, res) {
   res.render( 'index', { tweets: tweets } );
 });
 
+router.get( '/users/:name', function(req, res){
+    
+} );
+
+
 // router.get('/stylesheets/style.css', function(req, res, next){
 //     res.sendFile('/Users/jyu/Dropbox/Code/twitter-js/public/stylesheets/style.css');
 // })
